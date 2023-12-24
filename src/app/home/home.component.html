@@ -1,0 +1,42 @@
+<div class="grid-container">
+    <!-- Application header-->
+    <app-header
+        [title]="'MohanishX-IPTV' | translate"
+        [subtitle]="'An Live TV Telecasting App' | translate"
+    ></app-header>
+
+    <!-- Tab-based layout -->
+    <mat-tab-group
+        [dynamicHeight]="true"
+        color="primary"
+        backgroundColor="primary"
+        mat-stretch-tabs
+    >
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <mat-icon class="tab-icon">tv</mat-icon>
+                <div class="tab-title">
+                    {{ 'Live Tv' | translate }}
+                </div>
+            </ng-template>
+            <ng-template matTabContent>
+                <app-recent-playlists class="recent-playlists">
+                </app-recent-playlists>
+            </ng-template>
+        </mat-tab>
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <mat-icon class="tab-icon">login</mat-icon>
+                <div class="tab-title">
+                    {{ 'Login' | translate }}
+                </div>
+            </ng-template>
+            <ng-template matTabContent>
+                <app-url-upload (urlAdded)="sendPlaylistsUrl($event)" />
+            </ng-template>
+        </mat-tab>
+    </mat-tab-group>
+
+    <!-- Loading spinner -->
+    <mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
+</div>
